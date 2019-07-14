@@ -3,9 +3,7 @@
 #ifdef PROTOCOL_LUFA
   #include "lufa.h"
   #include "split_util.h"
-  // ADD START
   #include "keymap_jp.h"
-  // ADD END
 #endif
 #ifdef SSD1306OLED
   #include "ssd1306.h"
@@ -24,15 +22,11 @@ extern uint8_t is_master;
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-/*
 #define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _ADJUST 3
+#define _FUNCTION 1
 
+/*
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  LOWER,
   RAISE,
   ADJUST,
   BACKLIT,
@@ -40,7 +34,7 @@ enum custom_keycodes {
 };
 */
 enum custom_keycodes {
-  RGBRST = SAFE_RANGE
+  RGBRST = SAFE_RANGE,
 };
 
 
@@ -83,8 +77,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [1] = LAYOUT( \
     JP_ZHTG, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
-    RGB_TOG, RGBRST,  RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-    XXXXXXX, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, RGBRST,  RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGUP, XXXXXXX,  \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,      KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX, KC_HOME, KC_PGDN, KC_END   \
   )
@@ -98,6 +92,7 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
+/*
 // Setting ADJUST layer RGB back to default
 void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
   if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
@@ -106,6 +101,7 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
     layer_off(layer3);
   }
 }
+*/
 
 void matrix_init_user(void) {
     #ifdef RGBLIGHT_ENABLE
@@ -169,27 +165,28 @@ void iota_gfx_task_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-#ifdef SSD1306OLED
+    #ifdef SSD1306OLED
     set_keylog(keycode, record);
-#endif
+    #endif
     // set_timelog();
   }
 
   switch (keycode) {
     /*
+
     case QWERTY:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_QWERTY);
       }
       return false;
       break;
-    case LOWER:
+    case FUNCTION:
       if (record->event.pressed) {
-        layer_on(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_on(_FUNCTION);
+        update_tri_layer_RGB(_FUNCTION);
       } else {
-        layer_off(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_off(_FUNCTION);
+        update_tri_layer_RGB(_FUNCTION);
       }
       return false;
       break;
@@ -211,6 +208,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
         break;
+    */
+
     case RGB_MOD:
       #ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
@@ -221,7 +220,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       #endif
       return false;
       break;
-    */
     case RGBRST:
       #ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
