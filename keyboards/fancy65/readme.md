@@ -1,9 +1,11 @@
 Fancy65
 ===
 
-![Fancy65](https://teramiya-lab.com/wp-content/uploads/2019/07/IMG_20190715_005418.jpg)
+![Fancy65](https://user-images.githubusercontent.com/52422659/61323391-dc628080-a84a-11e9-9c9b-1be5106f11e4.jpg)
 
-![Fancy65](https://teramiya-lab.com/wp-content/uploads/2019/07/IMG_20190715_231843.jpg)
+![Fancy65](https://user-images.githubusercontent.com/52422659/61323403-e1bfcb00-a84a-11e9-93f6-a87ef32c6ad0.jpg)
+
+![Fancy65](https://user-images.githubusercontent.com/52422659/61323435-f00de700-a84a-11e9-9510-c1706dcd7b9f.jpg)
 
 A split keyboard with 30 + 35 keys.
 
