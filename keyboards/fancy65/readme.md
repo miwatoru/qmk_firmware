@@ -9,9 +9,9 @@ Fancy65
 
 A split keyboard with 30 + 35 keys.
 
-Keyboard Maintainer: [terahide](https://github.com/tera-hide/) [@てらひで](https://twitter.com/karin_terah)  
+Keyboard Maintainer: [terahide](https://github.com/tera-hide/) [@terahide](https://twitter.com/karin_terah)  
 Hardware Supported: Fancy65 PCB
-Hardware Availability: [BOOTH](https://teramiya-lab.booth.pm/) [WebSite](https://teramiya-lab.com/)
+Hardware Availability: [WebSite](https://teramiya-lab.com/keyboard) [Shop-BOOTH](https://teramiya-lab.booth.pm/) 
 
 Make example for this keyboard (after setting up your build environment):
 

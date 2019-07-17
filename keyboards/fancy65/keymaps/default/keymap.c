@@ -26,7 +26,7 @@ extern uint8_t is_master;
 #define _FUNCTION 1
 
 enum custom_keycodes {
-  RGBRST = SAFE_RANGE,
+  RGB_RST = SAFE_RANGE,
 };
 
 #define KC______ KC_TRNS
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT( \
     JP_ZHTG, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
     RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-    XXXXXXX, RGBRST,  RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, RGB_RST,  RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGUP, XXXXXXX,  \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,      KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX, KC_HOME, KC_PGDN, KC_END   \
   )
@@ -121,7 +121,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       #endif
       return false;
       break;
-    case RGBRST:
+    case RGB_RST:
       #ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
           eeconfig_update_rgblight_default();
